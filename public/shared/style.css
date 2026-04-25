@@ -64,11 +64,9 @@ a {
     opacity: 0.18;
     background:
         linear-gradient(rgba(255, 255, 255, 0.018), rgba(255, 255, 255, 0)),
-        repeating-linear-gradient(
-            90deg,
+        repeating-linear-gradient(90deg,
             rgba(255, 255, 255, 0.012) 0 1px,
-            transparent 1px 120px
-        );
+            transparent 1px 120px);
 }
 
 .wrap {
@@ -240,13 +238,11 @@ nav a::after {
     left: -140%;
     width: 90%;
     height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.16) 45%,
-        rgba(255, 255, 255, 0.28) 50%,
-        transparent 100%
-    );
+    background: linear-gradient(120deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.16) 45%,
+            rgba(255, 255, 255, 0.28) 50%,
+            transparent 100%);
     transition: transform 0.55s ease;
 }
 
@@ -422,12 +418,10 @@ nav a:hover::after {
     position: absolute;
     inset: 0;
     transform: translateX(100%);
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.04) 20%,
-        transparent 42%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.04) 20%,
+            transparent 42%);
     animation: panelShine 3.8s ease 1.5s infinite;
 }
 
@@ -545,12 +539,10 @@ nav a:hover::after {
 }
 
 .btn.primary {
-    background: linear-gradient(
-        90deg,
-        rgba(184, 115, 51, 0.22),
-        rgba(215, 221, 232, 0.16),
-        rgba(212, 175, 55, 0.16)
-    );
+    background: linear-gradient(90deg,
+            rgba(184, 115, 51, 0.22),
+            rgba(215, 221, 232, 0.16),
+            rgba(212, 175, 55, 0.16));
 }
 
 /* side and bottom */
@@ -686,6 +678,7 @@ nav a:hover::after {
 }
 
 @keyframes tokenFloat {
+
     0%,
     100% {
         transform: rotate(0deg) translateY(0);
@@ -697,6 +690,7 @@ nav a:hover::after {
 }
 
 @keyframes metalPulse {
+
     0%,
     100% {
         filter: brightness(1);

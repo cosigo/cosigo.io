@@ -330,16 +330,17 @@ nav a:hover::after {
     display: grid;
     grid-template-columns: 1.08fr 0.92fr;
     align-items: start;
-    row-gap: 22px;
-    min-height: calc(100vh - 110px);
-    padding-top: 30px;
+    column-gap: 28px;
+    row-gap: 18px;
+    min-height: auto;
+    padding-top: 18px;
 }
 
 .hero-copy {
     position: relative;
     z-index: 12;
     max-width: 790px;
-    padding: 70px 0 80px;
+    padding: 36px 0 24px;
 }
 
 .eyebrow {
@@ -438,6 +439,26 @@ nav a:hover::after {
     color: var(--muted);
     font-size: 19px;
     line-height: 1.45;
+}
+
+.cigo-outlier-wrap {
+    padding-top: 8px;
+    padding-bottom: 18px;
+}
+
+.cigo-outlier {
+    max-width: 620px;
+    margin: 0 0 0 auto;
+    border-left: 3px solid rgba(212, 175, 55, 0.45);
+}
+
+.cigo-outlier p {
+    font-size: 19px;
+    line-height: 1.55;
+}
+
+.cigo-outlier strong {
+    color: #fff6d9;
 }
 
 .anchor-line {
@@ -549,15 +570,18 @@ nav a:hover::after {
 
 .hero-side {
     position: relative;
-    min-height: 560px;
+    min-height: 0;
+    align-self: start;
+    padding-top: 36px;
 }
 
 .side-caption {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
+    position: relative;
+    right: auto;
+    bottom: auto;
     z-index: 12;
-    width: min(340px, 90%);
+    width: min(340px, 100%);
+    margin: 0 0 0 auto;
     padding: 18px 18px 16px;
     border-radius: 22px;
     background: rgba(8, 10, 14, 0.26);
@@ -583,7 +607,7 @@ nav a:hover::after {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
-    margin-top: 34px;
+    margin-top: 18px;
     animation: rise 1s ease 1.08s forwards;
 }
 
@@ -724,10 +748,16 @@ nav a:hover::after {
 @media (max-width: 1100px) {
     .hero {
         grid-template-columns: 1fr;
+        row-gap: 18px;
+    }
+
+    .hero-copy {
+        padding: 34px 0 16px;
     }
 
     .hero-side {
-        min-height: 220px;
+        min-height: 0;
+        padding-top: 0;
     }
 
     .hero-token {
@@ -738,14 +768,13 @@ nav a:hover::after {
     }
 
     .side-caption {
-        left: 0;
-        right: auto;
-        bottom: 10px;
+        width: 100%;
+        margin: 0;
     }
 
     .hero-bottom {
         grid-template-columns: 1fr;
-        margin-top: 22px;
+        margin-top: 18px;
     }
 }
 

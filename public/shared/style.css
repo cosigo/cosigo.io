@@ -297,7 +297,7 @@ nav a:hover::after {
 }
 
 .rail-3 {
-    bottom: 220px;
+    bottom: 580px;
     font-size: 24px;
     opacity: 0.07;
     animation: driftLeft 62s linear infinite;
@@ -579,9 +579,9 @@ nav a:hover::after {
     position: relative;
     right: auto;
     bottom: auto;
-    z-index: 12;
+    z-index: 8;
     width: min(340px, 100%);
-    margin: 90px 0 0 auto;
+    margin: 20px 0 0 auto;
     padding: 18px 18px 16px;
     border-radius: 22px;
     background: rgba(8, 10, 14, 0.26);
@@ -602,12 +602,12 @@ nav a:hover::after {
 
 .hero-bottom {
     position: relative;
-    z-index: 15;
+    z-index: 2;
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
-    margin-top: 18px;
+    margin-top: 40px;
     animation: rise 1s ease 1.08s forwards;
 }
 
@@ -769,12 +769,12 @@ nav a:hover::after {
 
     .side-caption {
         width: 100%;
-        margin: 0;
+        margin: 20px 0 0;
     }
 
     .hero-bottom {
         grid-template-columns: 1fr;
-        margin-top: 18px;
+        margin-top: 25px;
     }
 }
 

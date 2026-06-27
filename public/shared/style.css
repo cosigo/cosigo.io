@@ -831,3 +831,113 @@ nav a:hover::after {
         width: 100%;
     }
 }
+
+/* === BEGIN CIGO metallic notice styles === */
+/* Extracted from public/index.html on 2026-06-27 21:59:27Z */
+article.signal.cigo-metal-notice {
+      grid-column: 1 / -1;
+      width: 100%;
+      min-height: 0;
+      align-self: start;
+      margin-top: 18px;
+      padding: 22px 22px 20px;
+      border-radius: 24px;
+      border: 1px solid rgba(245, 222, 179, 0.34);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255, 244, 214, 0.20), transparent 30%),
+        radial-gradient(circle at 88% 12%, rgba(184, 115, 51, 0.22), transparent 34%),
+        linear-gradient(135deg,
+          rgba(8, 6, 4, 0.98) 0%,
+          rgba(32, 20, 12, 0.97) 34%,
+          rgba(88, 55, 28, 0.90) 58%,
+          rgba(176, 141, 87, 0.58) 76%,
+          rgba(12, 9, 6, 0.98) 100%);
+      box-shadow:
+        0 0 0 1px rgba(255, 248, 220, 0.08) inset,
+        0 18px 55px rgba(0, 0, 0, 0.42),
+        0 0 34px rgba(184, 115, 51, 0.22),
+        0 0 22px rgba(214, 194, 143, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+
+    article.signal.cigo-metal-notice::before {
+      content: "";
+      position: absolute;
+      inset: -45%;
+      background:
+        linear-gradient(110deg,
+          transparent 38%,
+          rgba(255, 239, 194, 0.16) 49%,
+          rgba(192, 192, 192, 0.10) 53%,
+          transparent 64%);
+      transform: rotate(12deg);
+      pointer-events: none;
+    }
+
+    article.signal.cigo-metal-notice h3,
+    article.signal.cigo-metal-notice p {
+      position: relative;
+      z-index: 1;
+    }
+
+    article.signal.cigo-metal-notice h3 {
+      margin: 0 0 9px;
+      color: #fff4d6;
+      letter-spacing: .02em;
+      text-shadow:
+        0 0 18px rgba(212, 175, 55, 0.24),
+        0 1px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    article.signal.cigo-metal-notice p {
+      margin: 0;
+      color: #eadfca;
+      line-height: 1.65;
+    }
+
+    body article.signal.cigo-metal-notice a.cigo-glow-link {
+      display: inline-block !important;
+      color: #2b1700 !important;
+      font-weight: 950 !important;
+      letter-spacing: .04em;
+      text-decoration: none !important;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      margin: 0 4px 0 0;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 236, 179, 0.95);
+      background:
+        linear-gradient(135deg, #fff7cc 0%, #f7c948 28%, #b7791f 54%, #fff3b0 78%, #7c4a03 100%);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.34) inset,
+        0 0 18px rgba(251,191,36,0.72),
+        0 0 42px rgba(251,191,36,0.32),
+        0 8px 18px rgba(0,0,0,0.30);
+      transform: translateY(-1px);
+    }
+
+    body article.signal.cigo-metal-notice a.cigo-glow-link:hover,
+    body article.signal.cigo-metal-notice a.cigo-glow-link:focus {
+      color: #000000 !important;
+      border-color: #fff7cc;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.46) inset,
+        0 0 24px rgba(251,191,36,0.95),
+        0 0 64px rgba(253,230,138,0.52),
+        0 10px 22px rgba(0,0,0,0.34);
+      transform: translateY(-2px);
+    }
+
+    body article.signal.cigo-metal-notice a:not(.cigo-glow-link) {
+      color: #f7d774 !important;
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    body article.signal.cigo-metal-notice a:not(.cigo-glow-link):hover,
+    body article.signal.cigo-metal-notice a:not(.cigo-glow-link):focus {
+      color: #fff4b8 !important;
+      text-shadow: 0 0 14px rgba(212, 175, 55, 0.34);
+    }
+/* === END CIGO metallic notice styles === */

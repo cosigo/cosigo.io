@@ -17,3 +17,4 @@ build/
 
 # Allow tracked placeholders
 !.gitkeep
+public/status-public.json

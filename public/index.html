@@ -36,9 +36,61 @@
   <meta name="twitter:description"
     content="Official website for the COSIGO token with contract, documentation, custody, and redemption references.">
   <meta name="twitter:image" content="https://cosigo.io/shared/assets/cosigo_master/cosigo_master_512.png">
+    <style id="cosigo-front-quicklinks">
+      .cosigo-front-quicklinks {
+        position: fixed;
+        left: 14px;
+        bottom: 12px;
+        z-index: 1200;
+        display: inline-flex;
+        align-items: center;
+        padding: 4px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.10);
+        background: rgba(11,15,21,.62);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 8px 22px rgba(0,0,0,.18);
+      }
+
+      .cosigo-front-quicklinks a {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        min-height: 24px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        color: #dfe6f3;
+        text-decoration: none;
+        font-size: .72rem;
+        line-height: 1;
+        opacity: .86;
+      }
+
+      .cosigo-front-quicklinks a:hover {
+        opacity: 1;
+        background: rgba(212,175,55,.08);
+      }
+
+      .cosigo-status-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #72d391;
+        box-shadow: 0 0 0 2px rgba(114,211,145,.12);
+      }
+    </style>
+
 </head>
 
 <body>
+    <nav class="cosigo-front-quicklinks" aria-label="COSIGO status">
+      <a href="/status.html" title="COSIGO public system status">
+        <span class="cosigo-status-dot" aria-hidden="true"></span>
+        <span>Status</span>
+      </a>
+    </nav>
+
+
   <div class="site">
 
     <div class="word-rail rail-1">

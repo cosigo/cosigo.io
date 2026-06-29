@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>COSIGO Public Infrastructure Status</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <style>
+    :root {
+      --bg: #0b0f15;
+      --panel: #171d27;
+      --line: rgba(255,255,255,.11);
+      --ink: #e8edf7;
+      --muted: #aab4c4;
+      --gold: #d4af37;
+      --ok: #72d391;
+      --warn: #ffd36a;
+      --bad: #ff7a7a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(212,175,55,.08), transparent 34rem),
+        linear-gradient(180deg, #0b0f15, #090d13);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 34px auto;
+    }
+
+    header,
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.035);
+      box-shadow: 0 18px 48px rgba(0,0,0,.28);
+    }
+
+    header {
+      padding: clamp(18px, 3vw, 32px);
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.9rem, 4vw, 3.4rem);
+      line-height: 1.02;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    a { color: var(--ink); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .card {
+      padding: 18px;
+      background:
+        radial-gradient(circle at top left, rgba(212,175,55,.06), transparent 22rem),
+        var(--panel);
+    }
+
+    .card.full { grid-column: 1 / -1; }
+
+    .label {
+      color: var(--muted);
+      font-size: .78rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .value {
+      margin-top: 6px;
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    .sub {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .status-online,
+    .status-light { color: var(--ok); }
+
+    .status-protected,
+    .status-moderate,
+    .status-unavailable { color: var(--warn); }
+
+    .status-offline,
+    .status-busy,
+    .status-degraded { color: var(--bad); }
+
+    .service-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .service {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.10);
+      white-space: nowrap;
+      font-size: .9rem;
+    }
+
+    .cloud {
+      font-size: 1.45rem;
+      margin-right: 4px;
+    }
+
+    footer {
+      color: var(--muted);
+      text-align: center;
+      margin: 24px 0 12px;
+      font-size: .9rem;
+    }
+
+
+    .escape-nav {
+      width: min(1120px, calc(100% - 36px));
+      margin: 16px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.045);
+      box-shadow: 0 12px 30px rgba(0,0,0,.22);
+    }
+
+    .escape-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .escape-icons {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .escape-icons img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .escape-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .escape-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.045);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .92rem;
+    }
+
+    .escape-links a:hover {
+      border-color: rgba(212,175,55,.45);
+      background: rgba(212,175,55,.08);
+    }
+
+
+    /* ============================= */
+    /* COSIGO METAL STATUS THEME */
+    /* Purples · Browns · Golds · Coppers · Silvers */
+    /* ============================= */
+    :root {
+      --bg: #120b16;
+      --panel: #211719;
+      --panel2: #181017;
+      --line: rgba(212, 175, 55, .18);
+      --ink: #f1eadf;
+      --muted: #c3b3a0;
+      --gold: #d4af37;
+      --copper: #b77945;
+      --silver: #c9c7be;
+      --purple: #4e315d;
+      --ok: #b9d98c;
+      --warn: #d4af37;
+      --bad: #d97966;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 8% 0%, rgba(98, 56, 119, .36), transparent 34rem),
+        radial-gradient(circle at 88% 8%, rgba(180, 111, 54, .16), transparent 30rem),
+        radial-gradient(circle at 50% 100%, rgba(212, 175, 55, .10), transparent 36rem),
+        linear-gradient(180deg, #120b16 0%, #0d0a0d 100%);
+      color: var(--ink);
+    }
+
+    header,
+    .card,
+    .escape-nav {
+      border-color: rgba(212, 175, 55, .20);
+      background:
+        radial-gradient(circle at top left, rgba(98, 56, 119, .18), transparent 22rem),
+        linear-gradient(180deg, rgba(80, 50, 34, .46), rgba(24, 16, 23, .92));
+      box-shadow:
+        0 18px 48px rgba(0,0,0,.34),
+        inset 0 1px 0 rgba(255,255,255,.045);
+    }
+
+    .card {
+      background:
+        radial-gradient(circle at top left, rgba(212, 175, 55, .075), transparent 20rem),
+        radial-gradient(circle at bottom right, rgba(98, 56, 119, .16), transparent 24rem),
+        linear-gradient(180deg, rgba(43, 29, 25, .94), rgba(24, 16, 23, .96));
+    }
+
+    .eyebrow,
+    .label {
+      color: var(--gold);
+    }
+
+    h1,
+    .value {
+      color: var(--silver);
+    }
+
+    p,
+    .sub,
+    footer {
+      color: var(--muted);
+    }
+
+    .pill,
+    .service {
+      border-color: rgba(201, 199, 190, .14);
+      background: rgba(255,255,255,.045);
+    }
+
+    .cloud {
+      color: var(--silver);
+    }
+
+    a {
+      color: #e8dcc7;
+    }
+
+    a:hover {
+      color: #ffffff;
+    }
+
+    .escape-links a:hover {
+      border-color: rgba(212,175,55,.48);
+      background: rgba(180,111,54,.16);
+    }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .service { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="escape-nav" aria-label="COSIGO status page navigation">
+    <a class="escape-brand" href="https://cosigo.io/">
+      <span class="escape-icons">
+        <img src="/favicon.svg" alt="COSIGO">
+      </span>
+      <span>COSIGO</span>
+    </a>
+
+    <div class="escape-links">
+      <a href="https://cosigo.io/">Home</a>
+      <a href="https://trade.cosigo.io/">CIGO Trade</a>
+      <a href="https://node.cosigo.io/">Verification Node</a>
+      <a href="https://bcnode.io/">bcnode.io</a>
+      <a href="https://stream.cosigo.io/">Stream</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header>
+      <p class="eyebrow">COSIGO infrastructure</p>
+      <h1>Public System Status</h1>
+      <p>
+        Lightweight public snapshot of COSIGO service availability and basic server health.
+        Private monitoring, process lists, server IPs, wallet systems, users, ports, and administrative data are not exposed.
+      </p>
+      <p class="sub" id="updated">Loading status…</p>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <div class="label">Edge / DNS / Protection</div>
+        <div class="value"><span class="cloud">☁</span><span id="edgeStatus">checking</span></div>
+        <div class="sub" id="edgeSub">Cloudflare detection from public response headers.</div>
+      </article>
+
+      <article class="card">
+        <div class="label">Public services</div>
+        <div class="value" id="serviceSummary">checking</div>
+        <div class="sub">Main, stream, trade, and Bitcoin node endpoints.</div>
+      </article>
+
+      <article class="card">
+        <div class="label">Main COSIGO server</div>
+        <div class="value" id="mainState">checking</div>
+        <div class="sub" id="mainSub">cosigo.io and node.cosigo.io</div>
+      </article>
+
+      <article class="card">
+        <div class="label">COSIGO stream server</div>
+        <div class="value" id="streamState">checking</div>
+        <div class="sub" id="streamSub">stream.cosigo.io</div>
+      </article>
+
+      <article class="card">
+        <div class="label">CIGO trade server</div>
+        <div class="value" id="tradeState">checking</div>
+        <div class="sub" id="tradeSub">trade.cosigo.io</div>
+      </article>
+
+      <article class="card">
+        <div class="label">Bitcoin node server</div>
+        <div class="value" id="bitcoinState">checking</div>
+        <div class="sub" id="bitcoinSub">bcnode.io and explorer.bcnode.io</div>
+      </article>
+
+      <article class="card full">
+        <div class="label">Service checks</div>
+        <div class="service-list" id="services"></div>
+      </article>
+    </section>
+
+    <footer>
+      COSIGO public status · redacted operational snapshot · <a href="https://cosigo.io/">cosigo.io</a>
+    </footer>
+  </main>
+
+  <script>
+    function fmtBytes(n) {
+      if (!Number.isFinite(Number(n))) return "not published";
+      const units = ["B", "KB", "MB", "GB", "TB"];
+      let v = Number(n), i = 0;
+      while (v >= 1024 && i < units.length - 1) { v /= 1024; i++; }
+      return v.toFixed(i === 0 ? 0 : 1) + " " + units[i];
+    }
+
+    function fmtLoad(n) {
+      return Number.isFinite(Number(n)) ? Number(n).toFixed(2) : "—";
+    }
+
+    function fmtPct(n) {
+      return Number.isFinite(Number(n)) ? Number(n).toFixed(1) + "%" : "not published";
+    }
+
+    function statusClass(s) {
+      return "status-" + String(s || "unavailable").toLowerCase();
+    }
+
+    function serviceLine(s) {
+      const cf = s.cloudflareDetected ? " · ☁ Cloudflare" : "";
+      return `
+        <div class="service">
+          <div>
+            <strong>${s.name}</strong>
+            <div class="sub"><a href="${s.url}">${s.url}</a>${cf}</div>
+          </div>
+          <div class="pill ${statusClass(s.status)}">${s.status}${s.httpCode ? " · " + s.httpCode : ""}</div>
+        </div>
+      `;
+    }
+
+    function setServerCard(id, group) {
+      const state = document.getElementById(id + "State");
+      const sub = document.getElementById(id + "Sub");
+
+      if (!group || !group.available || !group.system) {
+        state.innerHTML = '<span class="status-unavailable">unavailable</span>';
+        sub.textContent = group && group.services ? group.services.join(", ") + " · status JSON unavailable" : "status JSON unavailable";
+        return;
+      }
+
+      const s = group.system;
+      let label = s.loadLabel;
+      if (!label && Number.isFinite(Number(s.load1))) {
+        const load1 = Number(s.load1);
+        const assumedCores = group.id === "bitcoin" ? 4 : 1;
+        const ratio = load1 / assumedCores;
+        label = ratio < 0.70 ? "light" : ratio < 1.30 ? "moderate" : "busy";
+      }
+      label = label || "unknown";
+      state.innerHTML = `<span class="${statusClass(label)}">${label}</span>`;
+
+      let extra = "";
+      if (group.id === "bitcoin" && group.extra) {
+        extra = ` · peers ${group.extra.peers ?? "—"}`;
+      }
+
+      sub.textContent =
+        `Load ${fmtLoad(s.load1)} / ${fmtLoad(s.load5)} / ${fmtLoad(s.load15)} · ` +
+        `RAM available ${fmtBytes(s.memoryAvailableBytes)} · disk used ${fmtPct(Number(s.diskUsedPercent))}` +
+        extra;
+    }
+
+    async function update() {
+      const res = await fetch("/status-public.json?t=" + Date.now(), { cache: "no-store" });
+      const d = await res.json();
+
+      document.getElementById("updated").textContent =
+        d.generatedAt ? "Updated " + d.generatedAt + " UTC" : "Updated —";
+
+      const edge = d.edge || {};
+      const cfServices = edge.cloudflareDetectedServices || [];
+      const edgeNote = "Other public services may be direct or DNS-only.";
+      document.getElementById("edgeStatus").textContent =
+        cfServices.length ? "Cloudflare detected on selected services" : "not detected";
+      document.getElementById("edgeSub").innerHTML =
+        cfServices.length
+          ? "Detected on: " + cfServices.join(", ") + "<br>" + edgeNote
+          : "No Cloudflare headers detected in current checks.<br>" + edgeNote;
+
+      const services = d.services || [];
+      const online = services.filter(s => s.status === "online").length;
+      const protectedCount = services.filter(s => s.status === "protected").length;
+      document.getElementById("serviceSummary").textContent =
+        `${online}/${services.length} online` + (protectedCount ? ` · ${protectedCount} protected` : "");
+
+      const groups = {};
+      (d.serverGroups || []).forEach(g => { groups[g.id] = g; });
+
+      setServerCard("main", groups.main);
+      setServerCard("stream", groups.stream);
+      setServerCard("trade", groups.trade);
+      setServerCard("bitcoin", groups.bitcoin);
+
+      document.getElementById("services").innerHTML = services.map(serviceLine).join("");
+    }
+
+    update().catch(err => {
+      document.getElementById("updated").textContent = "Status temporarily unavailable: " + err;
+    });
+
+    setInterval(() => update().catch(() => {}), 30000);
+  </script>
+</body>
+</html>

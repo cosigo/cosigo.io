@@ -941,3 +941,11 @@ article.signal.cigo-metal-notice {
       text-shadow: 0 0 14px rgba(212, 175, 55, 0.34);
     }
 /* === END CIGO metallic notice styles === */
+
+/* === BEGIN educational project status notice === */
+.site-footer-basic .educational-status-notice{width:min(980px,100%);margin:0 auto 20px;padding:18px 20px;border:1px solid rgba(212,175,55,.30);border-radius:18px;background:radial-gradient(circle at top left,rgba(212,175,55,.08),transparent 24rem),rgba(255,255,255,.025);color:#dfe6f3;text-align:left}
+.site-footer-basic .educational-status-notice strong{display:block;margin-bottom:7px;color:#f3df99;font-size:1rem}
+.site-footer-basic .educational-status-notice p{margin:0 0 9px;color:#aab4c4;font-size:.92rem;line-height:1.6}
+.site-footer-basic .educational-status-notice a{color:#f3df99;font-weight:750;text-decoration:none}
+.site-footer-basic .educational-status-notice a:hover,.site-footer-basic .educational-status-notice a:focus{color:#fff4c2;text-decoration:underline}
+/* === END educational project status notice === */

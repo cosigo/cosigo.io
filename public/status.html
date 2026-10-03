@@ -2,9 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>COSIGO Public Infrastructure Status</title>
+  <title>COSIGO Public Infrastructure Status & Labs</title>
+  <meta name="description" content="Official redacted COSIGO public infrastructure status plus navigation to COSIGO Labs, including the Bitcoin verification environment and Auspicious 8 public and engineering research pages.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="index,follow">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="COSIGO">
+  <meta name="theme-color" content="#120b16">
+  <link rel="canonical" href="https://cosigo.io/status.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="COSIGO">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="COSIGO Public Infrastructure Status & Labs">
+  <meta property="og:description" content="Redacted COSIGO service health with direct links to the Bitcoin verification and Auspicious 8 laboratory surfaces.">
+  <meta property="og:url" content="https://cosigo.io/status.html">
+  <meta property="og:image" content="https://cosigo.io/shared/assets/cosigo_master/cosigo_master_512.png">
+  <meta property="og:image:alt" content="COSIGO public infrastructure and laboratory status">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="COSIGO Public Infrastructure Status & Labs">
+  <meta name="twitter:description" content="Redacted COSIGO service health and direct navigation to COSIGO Labs.">
+  <meta name="twitter:image" content="https://cosigo.io/shared/assets/cosigo_master/cosigo_master_512.png">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "COSIGO Public Infrastructure Status & Labs",
+    "url": "https://cosigo.io/status.html",
+    "description": "Redacted COSIGO infrastructure health and public laboratory navigation.",
+    "dateModified": "2026-08-16",
+    "inLanguage": "en",
+    "isPartOf": {"@type":"WebSite","name":"COSIGO","url":"https://cosigo.io/"},
+    "about": [
+      {"@type":"Thing","name":"Public infrastructure status"},
+      {"@type":"Thing","name":"Bitcoin verification lab"},
+      {"@type":"Thing","name":"Auspicious 8 experimental research"}
+    ]
+  }
+  </script>
   <style>
     :root {
       --bg: #0b0f15;
@@ -305,6 +345,70 @@
       background: rgba(180,111,54,.16);
     }
 
+    .escape-menu {
+      position: relative;
+      margin-left: auto;
+    }
+
+    .escape-menu summary {
+      list-style: none;
+      cursor: pointer;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: var(--ink);
+      font-size: .86rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      user-select: none;
+    }
+
+    .escape-menu summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .escape-menu summary::after {
+      content: " ▾";
+      margin-left: .35rem;
+      color: var(--gold);
+    }
+
+    .escape-menu[open] summary::after {
+      content: " ▴";
+    }
+
+    .escape-menu .escape-links {
+      position: absolute;
+      z-index: 100;
+      top: calc(100% + 8px);
+      right: 0;
+      width: min(290px, calc(100vw - 32px));
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 10px;
+      border: 1px solid rgba(212,175,55,.22);
+      border-radius: 14px;
+      background: rgba(18,11,22,.97);
+      box-shadow: 0 18px 50px rgba(0,0,0,.42);
+      backdrop-filter: blur(14px);
+    }
+
+    .escape-menu:not([open]) .escape-links {
+      display: none;
+    }
+
+    .escape-menu .escape-links a {
+      width: 100%;
+      justify-content: flex-start;
+      box-sizing: border-box;
+    }
+
     @media (max-width: 760px) {
       .grid { grid-template-columns: 1fr; }
       .service { grid-template-columns: 1fr; }
@@ -320,13 +424,22 @@
       <span>COSIGO</span>
     </a>
 
-    <div class="escape-links">
-      <a href="https://cosigo.io/">Home</a>
-      <a href="https://trade.cosigo.io/">CIGO Trade</a>
-      <a href="https://node.cosigo.io/">Verification Node</a>
-      <a href="https://bcnode.io/">bcnode.io</a>
-      <a href="https://stream.cosigo.io/">Stream</a>
-    </div>
+    <details class="escape-menu">
+      <summary>MENU</summary>
+      <div class="escape-links">
+        <a href="https://cosigo.io/">Home</a>
+        <a href="https://trade.cosigo.io/">CIGO Trade</a>
+        <a href="https://node.cosigo.io/">Verification Node</a>
+        <a href="https://bcnode.io/">bcnode.io</a>
+        <a href="https://stream.cosigo.io/">Stream</a>
+        <a href="https://a8.cosigo.io/">A8 Public</a>
+        <a href="https://time.cosigo.io/">COSIGO Time</a>
+        <a href="https://date.cosigo.io/">COSIGO Date</a>
+        <a href="https://ganymede.cosigo.io/">Ganymede Orbit</a>
+        <a href="https://lab.cosigo.io/">A8 Lab</a>
+        <a href="https://docs.cosigo.io/">Docs</a>
+      </div>
+    </details>
   </nav>
 
   <main class="wrap">
@@ -350,7 +463,7 @@
       <article class="card">
         <div class="label">Public services</div>
         <div class="value" id="serviceSummary">checking</div>
-        <div class="sub">Main, stream, trade, and Bitcoin node endpoints.</div>
+        <div class="sub">Main, stream, trade, and Bitcoin node endpoints. A8 links are listed below; they are not yet part of this page&#39;s dynamic health feed.</div>
       </article>
 
       <article class="card">
@@ -377,6 +490,39 @@
         <div class="sub" id="bitcoinSub">bcnode.io and explorer.bcnode.io</div>
       </article>
 
+
+      <article class="card full">
+        <div class="label">COSIGO Labs</div>
+        <div class="value">Working educational and research systems</div>
+        <div class="sub">This block is a public directory. Only services present in status-public.json are health-polled by this page.</div>
+        <div class="service-list">
+          <div class="service">
+            <div>
+              <strong>Bitcoin Verification Lab</strong>
+              <div class="sub">
+                Independent Bitcoin validation and public verification infrastructure:
+                <a href="https://node.cosigo.io/">node.cosigo.io</a> ·
+                <a href="https://bcnode.io/">bcnode.io</a> ·
+                <a href="https://explorer.bcnode.io/">explorer.bcnode.io</a>
+              </div>
+            </div>
+            <div class="pill">status tracked above</div>
+          </div>
+          <div class="service">
+            <div>
+              <strong>Auspicious 8</strong>
+              <div class="sub">
+                Experimental measurement architecture:
+                <a href="https://about.cosigo.io/">simple introduction</a> ·
+                <a href="https://a8.cosigo.io/">public instrument</a> ·
+                <a href="https://lab.cosigo.io/">engineering lab</a>
+              </div>
+            </div>
+            <div class="pill">research links</div>
+          </div>
+        </div>
+      </article>
+
       <article class="card full">
         <div class="label">Service checks</div>
         <div class="service-list" id="services"></div>
@@ -384,7 +530,7 @@
     </section>
 
     <footer>
-      COSIGO public status · redacted operational snapshot · <a href="https://cosigo.io/">cosigo.io</a> · <a href="/project-status.html">educational project notice</a>
+      COSIGO public status · redacted operational snapshot · <a href="https://cosigo.io/">cosigo.io</a> · <a href="https://docs.cosigo.io/">docs</a> · <a href="https://a8.cosigo.io/">A8</a> · <a href="/project-status.html">educational project notice</a>
     </footer>
   </main>
 
